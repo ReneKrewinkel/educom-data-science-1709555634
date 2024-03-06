@@ -1,0 +1,24 @@
+Door intensief gebruik en applicatiewijzigingen zijn er een aantal fouten ontstaan in de database. Hierdoor is de datakwaliteit wat minder
+en zullen een aantal stappen gezet moeten worden om de datakwaliteit en integriteit op een acceptabel niveau te krijgen:
+
+    1.  De tabel mhl_brands is in deze database niet gelinkt met een andere tabel waardoor het niet duidelijk is waar deze data bij hoort.
+        De tabel waar een brand naam mee is geassocieerd hoort een brand_id te hebben die dus verwijst naar de mhl_brands tabel. Deze kan
+        dan vervolgens via een foreign-key worden gelinkt met de geassocieerde tabel.
+    
+    2.  In de mhl_suppliers tabel zijn er een aantal inconsistenties bij de verwijzingen. De company, membertype en postcode zijn allebei
+        verwijzingen naar de desbetreffende tabellen mhl_companies en mhl_membertypes. Door de kolomnamen van company en membertype naar
+        company_id, membertype_id en postcode_id te wijzigen is de data beter te begrijpen.
+    
+    3.  De straat en adres kunnen in een aparte tabel gezet worden. In de tabel pc_lat_long kan een extra kolomregel komen genaamd straat_id
+        die verwezen worden naar de straat tabel en de straat tabel kan dan doorverwezen worden naar de city tabel. Hierdoor hoef je alleen
+        p_postcode_id en postcode_id en het huisnr in de mhl_suppliers tabel te hebben.
+
+    4.  Houd 1 taal aan. Het grote gedeelte van de database staat in het Engels, maar straat, huisnr en postcode staan in het Nederlands. Om 
+        consistent te blijven is het beter om 1 taal aan te houden.
+    
+    5.  Hernaam de mhl_suppliers_mhl_rubriek_view naar mhl_suppliers_mhl_rubriek. In de gegeven database is er geen tabel die mhl_rubriek_view
+        heet. Om verwarring te voorkomen is het beter om het _view gedeelte weg te halen gezien deze geen toegevoegde waarde heeft.
+    
+    6.  Om dezelfde rede als stap 5 is het beter om in de tabel mhl_detaildefs de group_id aan te passen naar detailgroup_id.
+
+    7.  Net zoals stap 2 is er in de tabel mhl_contacts een inconsistentie bij de verwijzing. De kolom department moet department_id zijn.
