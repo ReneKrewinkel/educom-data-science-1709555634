@@ -1,1 +1,1 @@
-SELECT DISTINCT name FROM steden
+SELECT DISTINCT (name) FROM mhl_cities

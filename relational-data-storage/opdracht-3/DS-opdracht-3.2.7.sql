@@ -3,3 +3,4 @@ SELECT  name,
         huisnr,
         postcode
 FROM    mhl_suppliers
+WHERE   name LIKE "\'t%"

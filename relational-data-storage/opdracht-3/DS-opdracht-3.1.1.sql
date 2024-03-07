@@ -1,1 +1,1 @@
-SELECT name FROM steden
+SELECT * FROM mhl_cities
