@@ -13,5 +13,5 @@ if sys.argv[-2] == "-q":
 
 
 #Python script CSV files lezen opdracht
-file = pd.read_csv('C:/Users/alexy/Downloads/world-population/world-population.csv')
+file = pd.read_csv('world-population.csv')
 print (file)
